@@ -28,7 +28,7 @@ import json, shutil, subprocess
 # FORCE include speedtest for PyInstaller
 try:
     # import the package with a deterministic name so PyInstaller picks it up
-    import speedtest as _speedtest  # noqa: F401
+    import speedtest  # noqa: F401
 except Exception:
     # ignore at runtime if not available; build-time import helps PyInstaller
     pass

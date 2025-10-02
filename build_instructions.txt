@@ -1,0 +1,29 @@
+Build instructions - create standalone executables
+-------------------------------------------------
+
+Windows (.exe) using PyInstaller
+  1) Install PyInstaller:
+     pip install pyinstaller
+  2) Create a single-file exe:
+     pyinstaller --onefile --noconsole wifi_speed.py
+     # or to include a small GUI without console:
+     pyinstaller --onefile --windowed wifi_speed.py
+  3) The bundled exe will be in the `dist` folder.
+
+Notes for Windows:
+  - If the exe complains about missing Tcl/Tk, ensure your Python install includes Tkinter.
+  - Antivirus sometimes flags single-file pyinstaller exes; use --onedir if you have issues.
+
+Linux (AppImage) using PyInstaller + appimagetool
+  1) pip install pyinstaller
+  2) pyinstaller --onefile wifi_speed.py
+  3) Use an AppImage packaging workflow (outside scope here) to bundle the exe.
+
+macOS (.app)
+  1) pip install pyinstaller
+  2) pyinstaller --windowed --onefile wifi_speed.py
+  3) For App Store / Gatekeeper, you may need to codesign the app and create a proper app bundle.
+
+Troubleshooting
+  - If the link-speed detection commands (iwconfig, netsh, airport) are not found, the app will still run but show 'Unknown'.
+  - For Linux, some commands require root to access wireless device info.

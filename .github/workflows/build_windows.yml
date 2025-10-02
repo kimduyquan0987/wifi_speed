@@ -31,7 +31,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pyinstaller
-          pyinstaller --onefile --windowed --hidden-import=speedtest wifi_speed.py
+          pyinstaller --onefile --hidden-import speedtest --hidden-import speedtest-cli wifi_speed.py
 
       - name: Upload EXE artifact
         uses: actions/upload-artifact@v4

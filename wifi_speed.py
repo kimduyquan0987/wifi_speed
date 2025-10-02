@@ -25,10 +25,14 @@ import threading
 import time
 from datetime import datetime
 import json, shutil, subprocess
+# FORCE include speedtest for PyInstaller
 try:
-    from speedtest import Speedtest
+    # import the package with a deterministic name so PyInstaller picks it up
+    import speedtest as _speedtest  # noqa: F401
 except Exception:
-    Speedtest = None
+    # ignore at runtime if not available; build-time import helps PyInstaller
+    pass
+
 
 try:
     import tkinter as tk
